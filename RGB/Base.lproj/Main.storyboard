@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="129.33333333333337" id="Eqp-MQ-Hm1"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="QOC-jY-8Bu">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QOC-jY-8Bu">
                                 <rect key="frame" x="16" y="262" width="361" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="CjO-C2-MLl">
@@ -53,7 +53,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="VHh-6H-Fyl">
-                                        <rect key="frame" x="70" y="0.0" width="30" height="90"/>
+                                        <rect key="frame" x="53" y="0.0" width="30" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bew-3Y-NwT" userLabel="redLabel">
                                                 <rect key="frame" x="3" y="0.0" width="27" height="22.666666666666668"/>
@@ -79,27 +79,27 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="L7h-Sc-JR8">
-                                        <rect key="frame" x="127" y="0.0" width="234" height="90"/>
+                                        <rect key="frame" x="93" y="0.0" width="268" height="90"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="V3Z-IU-mHV" userLabel="redSlider">
-                                                <rect key="frame" x="-2" y="0.0" width="238" height="31"/>
-                                                <color key="minimumTrackTintColor" red="0.55686277149999996" green="0.1607843041" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.20000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="V3Z-IU-mHV" userLabel="redSlider">
+                                                <rect key="frame" x="-2" y="0.0" width="272" height="31"/>
+                                                <color key="minimumTrackTintColor" systemColor="systemRedColor"/>
                                                 <connections>
-                                                    <action selector="redSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="smf-TX-bSd"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="6fd-jO-yrE"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="o6V-i8-voW" userLabel="greenSlider">
-                                                <rect key="frame" x="-2" y="30" width="238" height="31"/>
+                                                <rect key="frame" x="-2" y="30" width="272" height="31"/>
                                                 <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
                                                 <connections>
-                                                    <action selector="greenSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="iBP-Ym-EI0"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="ljg-rn-Zfn"/>
                                                 </connections>
                                             </slider>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FtY-cv-6OD" userLabel="blueSlider">
-                                                <rect key="frame" x="-2" y="60" width="238" height="31"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.80000000000000004" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FtY-cv-6OD" userLabel="blueSlider">
+                                                <rect key="frame" x="-2" y="60" width="272" height="31"/>
                                                 <color key="minimumTrackTintColor" systemColor="systemBlueColor"/>
                                                 <connections>
-                                                    <action selector="blueSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="Aj9-Fr-fs2"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qaz-Wd-ff4"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -108,7 +108,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QOC-jY-8Bu" firstAttribute="top" secondItem="ROH-tR-0d7" secondAttribute="bottom" constant="33.666666666666629" id="09T-xZ-Qem"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QOC-jY-8Bu" secondAttribute="trailing" constant="16" id="59Y-A3-mgU"/>
@@ -140,11 +140,11 @@
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
