@@ -172,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="1080" y="3.1690140845070425"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="D5h-qe-pUP">
             <objects>
-                <viewController id="v2m-m0-kR4" sceneMemberID="viewController">
+                <viewController id="v2m-m0-kR4" customClass="MainViewController" customModule="RGB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nYD-GU-47a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

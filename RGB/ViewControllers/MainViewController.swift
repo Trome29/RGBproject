@@ -8,8 +8,11 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let settingsVC = segue.destination as? SettingsViewController
+        settingsVC?.mainViewBackground = view.backgroundColor
+        settingsVC?.delegate = self
     }
 }
 

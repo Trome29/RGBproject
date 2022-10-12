@@ -29,6 +29,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var blueTextField: UITextField!
     
     var delegate: SettingsViewControllerDelegate!
+    var mainViewBackground: UIColor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
