@@ -12,3 +12,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+extension MainViewController: SettingsViewControllerDelegate {
+    func setupColor(_ color: UIColor) {
+        view.backgroundColor = color
+    }
+}

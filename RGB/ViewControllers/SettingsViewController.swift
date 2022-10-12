@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    func setupColor(_ color: UIColor)
+}
+
 class SettingsViewController: UIViewController {
     
     // MARK: IBOutlets
@@ -24,7 +28,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenTextField: UITextField!
     @IBOutlet var blueTextField: UITextField!
     
-    
+    var delegate: SettingsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +37,7 @@ class SettingsViewController: UIViewController {
         setValue()
     }
     
-    // MARK: IBAction
+    // MARK: - IBAction
     @IBAction func sliderAction(_ sender: UISlider) {
         mixColors()
         switch sender {
@@ -47,11 +51,12 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
-        
+        delegate?.setupColor(viewRGB.backgroundColor ?? .white)
+        dismiss(animated: true)
     }
     
     
-    // MARK: Private Methods
+    // MARK: - Private Methods
     private func setupView() {
         viewRGB.layer.cornerRadius = viewRGB.frame.height / 5
     }

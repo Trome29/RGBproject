@@ -133,25 +133,38 @@
                                     <constraint firstItem="rAU-rd-ELR" firstAttribute="leading" secondItem="L7h-Sc-JR8" secondAttribute="trailing" constant="10" id="nD5-2g-OsW"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EES-AP-Yiz">
+                                <rect key="frame" x="128" y="493.5" width="64.5" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="4hL-Jd-nUJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QOC-jY-8Bu" firstAttribute="top" secondItem="ROH-tR-0d7" secondAttribute="bottom" constant="33.666666666666629" id="09T-xZ-Qem"/>
+                            <constraint firstItem="EES-AP-Yiz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="58y-xQ-g4o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QOC-jY-8Bu" secondAttribute="trailing" constant="16" id="59Y-A3-mgU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ROH-tR-0d7" secondAttribute="trailing" constant="16" id="HAX-Wd-4jO"/>
                             <constraint firstItem="QOC-jY-8Bu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UQ6-32-2ni"/>
                             <constraint firstItem="ROH-tR-0d7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="X42-RT-Kuv"/>
                             <constraint firstItem="ROH-tR-0d7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="pY5-zO-Rdm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EES-AP-Yiz" secondAttribute="bottom" constant="40" id="ucR-yQ-0im"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="blueLabelScore" destination="15i-gv-1G8" id="BZd-jl-ib6"/>
                         <outlet property="blueSLider" destination="FtY-cv-6OD" id="shN-Tz-B1M"/>
+                        <outlet property="blueTextField" destination="ccV-vD-wcF" id="pGt-7E-5BP"/>
                         <outlet property="greenLabelScore" destination="02S-VL-MKu" id="fc2-w9-T0r"/>
                         <outlet property="greenSlider" destination="o6V-i8-voW" id="3KE-IC-ibQ"/>
+                        <outlet property="greenTextField" destination="1HD-gr-jER" id="OH9-Xt-G4E"/>
                         <outlet property="redLabelScore" destination="Bew-3Y-NwT" id="bQR-YG-mxD"/>
                         <outlet property="redSlider" destination="V3Z-IU-mHV" id="Vlm-sm-bCW"/>
+                        <outlet property="redTextField" destination="8Gb-uz-ZmY" id="fOG-HO-oXR"/>
                         <outlet property="viewRGB" destination="ROH-tR-0d7" id="JVh-MH-JnA"/>
                     </connections>
                 </viewController>
