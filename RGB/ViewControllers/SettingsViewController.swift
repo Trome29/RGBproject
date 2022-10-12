@@ -20,6 +20,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSLider: UISlider!
     
+    @IBOutlet var redTextField: UITextField!
+    @IBOutlet var greenTextField: UITextField!
+    @IBOutlet var blueTextField: UITextField!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +45,11 @@ class SettingsViewController: UIViewController {
             blueLabelScore.text = string(from: sender)
         }
     }
+    
+    @IBAction func doneButtonPressed() {
+        
+    }
+    
     
     // MARK: Private Methods
     private func setupView() {
