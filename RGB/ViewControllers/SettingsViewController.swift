@@ -13,7 +13,7 @@ protocol SettingsViewControllerDelegate {
 
 class SettingsViewController: UIViewController {
     
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet var viewRGB: UIView!
     
     @IBOutlet var redLabelScore: UILabel!
@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenTextField: UITextField!
     @IBOutlet var blueTextField: UITextField!
     
+    // MARK: - Public Properties
     var delegate: SettingsViewControllerDelegate!
     var mainViewBackground: UIColor!
     
@@ -38,25 +39,26 @@ class SettingsViewController: UIViewController {
         viewRGB.layer.cornerRadius = viewRGB.frame.height / 5
         
         setValueForSliders()
-        setValue(to: redLabelScore, greenLabelScore, blueLabelScore)
-        setValue(to: redTextField, greenTextField, blueTextField)
+        setValue(for: redLabelScore, greenLabelScore, blueLabelScore)
+        setValue(for: redTextField, greenTextField, blueTextField)
+        addDoneButton(to: redTextField, greenTextField, blueTextField)
     }
     
-    // MARK: - IBAction
+    // MARK: - IBActions
     @IBAction func sliderAction(_ sender: UISlider) {
         
-        // переделать повторяющийся код, теги??
         switch sender.tag {
         case 0:
-            setValue(to: redLabelScore)
-            setValue(to: redTextField)
+            setValue(for: redLabelScore)
+            setValue(for: redTextField)
         case 1:
-            setValue(to: greenLabelScore)
-            setValue(to: greenTextField)
+            setValue(for: greenLabelScore)
+            setValue(for: greenTextField)
         case 2:
-            setValue(to: blueLabelScore)
-            setValue(to: blueTextField)
-        default: break
+            setValue(for: blueLabelScore)
+            setValue(for: blueTextField)
+        default:
+            break
         }
         mixColors()
     }
@@ -66,9 +68,7 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    
     // MARK: - Private Methods
-    
     private func mixColors() {
         viewRGB.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -77,19 +77,17 @@ class SettingsViewController: UIViewController {
         )
     }
     
-    private func setValue(to textFields: UITextField...) {
+    private func setValue(for textFields: UITextField...) {
         redTextField.text = string(from: redSlider)
         greenTextField.text = string(from: greenSlider)
         blueTextField.text = string(from: blueSLider)
     }
     
-    private func setValue(to labels: UILabel...) {
+    private func setValue(for labels: UILabel...) {
         redLabelScore.text = string(from: redSlider)
         greenLabelScore.text = string(from: greenSlider)
         blueLabelScore.text = string(from: blueSLider)
     }
-    
-    
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
@@ -101,6 +99,27 @@ class SettingsViewController: UIViewController {
         redSlider.value = Float(ciColor.red)
         greenSlider.value = Float(ciColor.green)
         blueSLider.value = Float(ciColor.blue)
+    }
+    
+    private func addDoneButton(to textFields: UITextField...) {
+        textFields.forEach { textField in
+            let toolbar = UIToolbar()
+            textField.inputAccessoryView = toolbar
+            toolbar.sizeToFit()
+            
+            let doneButton = UIBarButtonItem(
+                title: "Done",
+                style: .done,
+                target: .none,
+                action: #selector(doneDidTapped)
+            )
+            
+            toolbar.items = [doneButton]
+        }
+    }
+    
+    @objc private func doneDidTapped() {
+        view.endEditing(true)
     }
 }
 
