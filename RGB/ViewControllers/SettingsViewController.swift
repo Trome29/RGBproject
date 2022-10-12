@@ -33,14 +33,18 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        
+        viewRGB.backgroundColor = mainViewBackground
+        viewRGB.layer.cornerRadius = viewRGB.frame.height / 5
+        
+        setValueForSliders()
         mixColors()
         setValue()
     }
     
     // MARK: - IBAction
     @IBAction func sliderAction(_ sender: UISlider) {
-        mixColors()
+        
         switch sender {
         case redSlider:
             redLabelScore.text = string(from: sender)
@@ -49,6 +53,7 @@ class SettingsViewController: UIViewController {
         default:
             blueLabelScore.text = string(from: sender)
         }
+        mixColors()
     }
     
     @IBAction func doneButtonPressed() {
@@ -58,9 +63,6 @@ class SettingsViewController: UIViewController {
     
     
     // MARK: - Private Methods
-    private func setupView() {
-        viewRGB.layer.cornerRadius = viewRGB.frame.height / 5
-    }
     
     private func mixColors() {
         viewRGB.backgroundColor = UIColor(
@@ -68,6 +70,14 @@ class SettingsViewController: UIViewController {
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSLider.value), alpha: 1
         )
+    }
+    
+    private func setValueForSliders() {
+        let ciColor = CIColor(color: mainViewBackground)
+        
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSLider.value = Float(ciColor.blue)
     }
     
     private func setValue() {
@@ -79,5 +89,6 @@ class SettingsViewController: UIViewController {
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
+
 }
 
