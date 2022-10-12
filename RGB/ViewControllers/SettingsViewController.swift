@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol SettingsViewControllerDelegate {
-    func setupColor(_ color: UIColor)
-}
+
 
 class SettingsViewController: UIViewController {
     

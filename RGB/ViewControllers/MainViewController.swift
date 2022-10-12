@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    func setupColor(_ color: UIColor)
+}
+
 class MainViewController: UIViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
