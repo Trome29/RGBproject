@@ -110,11 +110,16 @@ class SettingsViewController: UIViewController {
             let doneButton = UIBarButtonItem(
                 title: "Done",
                 style: .done,
-                target: .none,
+                target: self,
                 action: #selector(doneDidTapped)
             )
+            let hiddenItem = UIBarButtonItem(
+                barButtonSystemItem: .flexibleSpace,
+                target: nil,
+                action: nil
+            )
             
-            toolbar.items = [doneButton]
+            toolbar.items = [hiddenItem, doneButton]
         }
     }
     
