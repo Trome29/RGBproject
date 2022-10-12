@@ -170,7 +170,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="TV1-yL-60g">
-                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="hud-qt-m7s"/>
+                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="hud-qt-m7s">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="3Hv-ck-ce9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aog-RQ-MMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
