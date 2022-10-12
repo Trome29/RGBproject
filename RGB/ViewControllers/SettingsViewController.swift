@@ -44,6 +44,10 @@ class SettingsViewController: UIViewController {
         setValue(for: redTextField, greenTextField, blueTextField)
         
         addDoneButton(to: redTextField, greenTextField, blueTextField)
+        
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
     }
     
     // MARK: - IBActions
@@ -155,12 +159,11 @@ extension SettingsViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard let text = textField.text else { return }
         
-        if let value = Float(text), value <= 1 {
+        if let value = Float(text), value <= 1, value >= 0 {
             switch textField.tag {
             case 0:
                 redSlider.setValue(value, animated: true)
@@ -171,12 +174,13 @@ extension SettingsViewController: UITextFieldDelegate {
             case 2:
                 blueSlider.setValue(value, animated: true)
                 setValue(for: blueLabelScore)
-            default:
-                break
+            default: break
             }
+            
             mixColors()
             return
         }
+        
         showAlert(title: "Wrong format!", message: "Please enter correct value")
     }
 }
