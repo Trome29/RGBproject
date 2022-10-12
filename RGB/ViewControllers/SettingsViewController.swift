@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
-    @IBOutlet var blueSLider: UISlider!
+    @IBOutlet var blueSlider: UISlider!
     
     @IBOutlet var redTextField: UITextField!
     @IBOutlet var greenTextField: UITextField!
@@ -39,8 +39,10 @@ class SettingsViewController: UIViewController {
         viewRGB.layer.cornerRadius = viewRGB.frame.height / 5
         
         setValueForSliders()
+        
         setValue(for: redLabelScore, greenLabelScore, blueLabelScore)
         setValue(for: redTextField, greenTextField, blueTextField)
+        
         addDoneButton(to: redTextField, greenTextField, blueTextField)
     }
     
@@ -73,32 +75,42 @@ class SettingsViewController: UIViewController {
         viewRGB.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSLider.value), alpha: 1
+            blue: CGFloat(blueSlider.value), alpha: 1
         )
     }
     
-    private func setValue(for textFields: UITextField...) {
-        redTextField.text = string(from: redSlider)
-        greenTextField.text = string(from: greenSlider)
-        blueTextField.text = string(from: blueSLider)
-    }
-    
-    private func setValue(for labels: UILabel...) {
-        redLabelScore.text = string(from: redSlider)
-        greenLabelScore.text = string(from: greenSlider)
-        blueLabelScore.text = string(from: blueSLider)
-    }
-    
-    private func string(from slider: UISlider) -> String {
-        String(format: "%.2f", slider.value)
-    }
-
     private func setValueForSliders() {
         let ciColor = CIColor(color: mainViewBackground)
         
         redSlider.value = Float(ciColor.red)
         greenSlider.value = Float(ciColor.green)
-        blueSLider.value = Float(ciColor.blue)
+        blueSlider.value = Float(ciColor.blue)
+    }
+    
+    private func setValue(for textFields: UITextField...) {
+        textFields.forEach { textField in
+            switch textField.tag {
+            case 0: redTextField.text = string(from: redSlider)
+            case 1: greenTextField.text = string(from: greenSlider)
+            case 2: blueTextField.text = string(from: blueSlider)
+            default: break
+            }
+        }
+    }
+    
+    private func setValue(for labels: UILabel...) {
+        labels.forEach { label in
+            switch label.tag {
+            case 0: redLabelScore.text = string(from: redSlider)
+            case 1: greenLabelScore.text = string(from: greenSlider)
+            case 2: blueLabelScore.text = string(from: blueSlider)
+            default: break
+            }
+        }
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
     
     private func addDoneButton(to textFields: UITextField...) {
@@ -145,6 +157,7 @@ extension SettingsViewController: UITextFieldDelegate {
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
         guard let text = textField.text else { return }
         
         if let value = Float(text), value <= 1 {
@@ -156,7 +169,7 @@ extension SettingsViewController: UITextFieldDelegate {
                 greenSlider.setValue(value, animated: true)
                 setValue(for: greenLabelScore)
             case 2:
-                blueSLider.setValue(value, animated: true)
+                blueSlider.setValue(value, animated: true)
                 setValue(for: blueLabelScore)
             default:
                 break
