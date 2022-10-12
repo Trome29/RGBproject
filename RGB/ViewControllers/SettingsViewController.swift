@@ -126,5 +126,44 @@ class SettingsViewController: UIViewController {
     @objc private func doneDidTapped() {
         view.endEditing(true)
     }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }
 
+//MARK: - UITextFieldDelegate
+extension SettingsViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        
+        if let value = Float(text), value <= 1 {
+            switch textField.tag {
+            case 0:
+                redSlider.setValue(value, animated: true)
+                setValue(for: redLabelScore)
+            case 1:
+                greenSlider.setValue(value, animated: true)
+                setValue(for: greenLabelScore)
+            case 2:
+                blueSLider.setValue(value, animated: true)
+                setValue(for: blueLabelScore)
+            default:
+                break
+            }
+            mixColors()
+            return
+        }
+        showAlert(title: "Wrong format!", message: "Please enter correct value")
+    }
+}
