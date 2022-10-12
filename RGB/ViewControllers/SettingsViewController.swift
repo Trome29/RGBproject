@@ -38,20 +38,25 @@ class SettingsViewController: UIViewController {
         viewRGB.layer.cornerRadius = viewRGB.frame.height / 5
         
         setValueForSliders()
-        mixColors()
-        setValue()
+        setValue(to: redLabelScore, greenLabelScore, blueLabelScore)
+        setValue(to: redTextField, greenTextField, blueTextField)
     }
     
     // MARK: - IBAction
     @IBAction func sliderAction(_ sender: UISlider) {
         
-        switch sender {
-        case redSlider:
-            redLabelScore.text = string(from: sender)
-        case greenSlider:
-            greenLabelScore.text = string(from: sender)
-        default:
-            blueLabelScore.text = string(from: sender)
+        // переделать повторяющийся код, теги??
+        switch sender.tag {
+        case 0:
+            setValue(to: redLabelScore)
+            setValue(to: redTextField)
+        case 1:
+            setValue(to: greenLabelScore)
+            setValue(to: greenTextField)
+        case 2:
+            setValue(to: blueLabelScore)
+            setValue(to: blueTextField)
+        default: break
         }
         mixColors()
     }
@@ -72,6 +77,24 @@ class SettingsViewController: UIViewController {
         )
     }
     
+    private func setValue(to textFields: UITextField...) {
+        redTextField.text = string(from: redSlider)
+        greenTextField.text = string(from: greenSlider)
+        blueTextField.text = string(from: blueSLider)
+    }
+    
+    private func setValue(to labels: UILabel...) {
+        redLabelScore.text = string(from: redSlider)
+        greenLabelScore.text = string(from: greenSlider)
+        blueLabelScore.text = string(from: blueSLider)
+    }
+    
+    
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
+    }
+
     private func setValueForSliders() {
         let ciColor = CIColor(color: mainViewBackground)
         
@@ -79,16 +102,5 @@ class SettingsViewController: UIViewController {
         greenSlider.value = Float(ciColor.green)
         blueSLider.value = Float(ciColor.blue)
     }
-    
-    private func setValue() {
-        redLabelScore.text = string(from: redSlider)
-        greenLabelScore.text = string(from: greenSlider)
-        blueLabelScore.text = string(from: blueSLider)
-    }
-    
-    private func string(from slider: UISlider) -> String {
-        String(format: "%.2f", slider.value)
-    }
-
 }
 
