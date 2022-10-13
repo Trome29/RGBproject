@@ -58,17 +58,15 @@ class SettingsViewController: UIViewController {
         case 1:
             setValue(for: greenLabelScore)
             setValue(for: greenTextField)
-        case 2:
+        default:
             setValue(for: blueLabelScore)
             setValue(for: blueTextField)
-        default:
-            break
         }
         mixColors()
     }
     
     @IBAction func doneButtonPressed() {
-        delegate?.setupColor(viewRGB.backgroundColor ?? .white)
+        delegate.setupColor(viewRGB.backgroundColor ?? .white)
         dismiss(animated: true)
     }
     
@@ -94,8 +92,7 @@ class SettingsViewController: UIViewController {
             switch textField.tag {
             case 0: redTextField.text = string(from: redSlider)
             case 1: greenTextField.text = string(from: greenSlider)
-            case 2: blueTextField.text = string(from: blueSlider)
-            default: break
+            default: blueTextField.text = string(from: blueSlider)
             }
         }
     }
@@ -105,8 +102,7 @@ class SettingsViewController: UIViewController {
             switch label.tag {
             case 0: redLabelScore.text = string(from: redSlider)
             case 1: greenLabelScore.text = string(from: greenSlider)
-            case 2: blueLabelScore.text = string(from: blueSlider)
-            default: break
+            default: blueLabelScore.text = string(from: blueSlider)
             }
         }
     }
@@ -169,10 +165,9 @@ extension SettingsViewController: UITextFieldDelegate {
             case 1:
                 greenSlider.setValue(value, animated: true)
                 setValue(for: greenLabelScore)
-            case 2:
+            default:
                 blueSlider.setValue(value, animated: true)
                 setValue(for: blueLabelScore)
-            default: break
             }
             
             mixColors()
